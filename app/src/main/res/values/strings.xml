@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NoteAppV2</string>
+    <string name="logo_description">logo</string>
+    <string name="welcome_back">Welcome back</string>
+    <string name="create_account_title">Create account</string>
+    <string name="username_input_text">Username</string>
+    <string name="password_input_text_view">Password</string>
+    <string name="password_confirm_input_text_view">Confirm password</string>
+    <string name="login_btn_text">Login</string>
+    <string name="no_have_account_text">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="create_account_btn_text">Create account</string>
+    <string name="already_have_account_text">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
+    <string name="back_navigation_description">back navigation</string>
+</resources>
