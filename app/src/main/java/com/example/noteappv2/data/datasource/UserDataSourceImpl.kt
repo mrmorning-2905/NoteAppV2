@@ -56,6 +56,7 @@ class UserDataSourceImpl(
 
     override suspend fun registerAccount(user: UserEntity): ResultState<String> = withContext(ioDispatcher) {
         return@withContext try {
+            userDao.insertOneUser(user)
             Success("register success user: $user")
         } catch (e: Exception) {
             Error(e)
