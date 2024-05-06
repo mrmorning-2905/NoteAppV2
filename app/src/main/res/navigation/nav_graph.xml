@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/sign_in_fragment_dest"
-        android:name="com.example.noteappv2.ui.SignInFragment"
+        android:name="com.example.noteappv2.ui.fragment.SignInFragment"
         android:label="Sign In" >
 
         <action
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/sign_up_fragment_dest"
-        android:name="com.example.noteappv2.ui.SignUpFragment"
+        android:name="com.example.noteappv2.ui.fragment.SignUpFragment"
         android:label="Sign Up" >
 
         <action

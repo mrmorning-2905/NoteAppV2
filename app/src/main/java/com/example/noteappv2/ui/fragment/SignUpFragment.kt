@@ -1,18 +1,20 @@
-package com.example.noteappv2.ui
+package com.example.noteappv2.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.noteappv2.R
 import com.example.noteappv2.data.entity.UserEntity
 import com.example.noteappv2.databinding.SignUpFragmentBinding
+import com.example.noteappv2.ui.NoteViewModelFactory
 import com.example.noteappv2.ui.viewmodels.SignUpViewModel
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : BaseFragment() {
+
+    override val logTag: String = SignUpFragment::class.java.simpleName
 
     private var _binding: SignUpFragmentBinding? = null
 
@@ -20,23 +22,15 @@ class SignUpFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun getLayoutId(): Int {
+        return R.layout.sign_up_fragment
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = SignUpFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initView(rootView: View) {
+        setupToolbar("", true)
+        _binding = SignUpFragmentBinding.bind(rootView)
         binding.signInBtn.setOnClickListener { setupNavigation() }
-        binding.backNavigationBtn.setOnClickListener { setupNavigation() }
+        //binding.backNavigationBtn.setOnClickListener { setupNavigation() }
         binding.buttonCreateAccount.setOnClickListener { handleCreateAccountClickListener() }
     }
 
@@ -61,10 +55,6 @@ class SignUpFragment : Fragment() {
 
         val newUser = UserEntity(uId = null, userName = userName, password = password)
         signUpViewModel.executeRegisterAccount(newUser)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onDestroyView() {
