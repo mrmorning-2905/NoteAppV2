@@ -1,6 +1,7 @@
 package com.example.noteappv2
 
 import android.app.Application
+import com.example.noteappv2.data.repository.INoteRepo
 import com.example.noteappv2.data.repository.IUserRepo
 import com.example.noteappv2.utils.log.LogcatLogWriter
 import com.example.noteappv2.utils.log.Logger
@@ -8,6 +9,9 @@ import com.example.noteappv2.utils.log.Logger
 class NoteApplication : Application() {
     val userRepository: IUserRepo
         get() = ServiceLocator.provideUserRepo(this)
+
+    val noteRepository: INoteRepo
+        get() = ServiceLocator.provideNoteRepo(this)
 
     override fun onCreate() {
         super.onCreate()

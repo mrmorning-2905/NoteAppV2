@@ -39,14 +39,15 @@ abstract class BaseFragment : Fragment() {
 
     fun setupToolbar(title: String, needHomeAsUp: Boolean) {
         val actionbar = (activity as? AppCompatActivity)?.supportActionBar
-        actionbar?.let {
-            it.setDisplayHomeAsUpEnabled(needHomeAsUp)
-            it.setHomeButtonEnabled(needHomeAsUp)
-            it.setDisplayShowTitleEnabled(needHomeAsUp)
-            it.title = title
-            it.setDisplayShowCustomEnabled(false)
-            it.customView = null
-            it.setBackgroundDrawable(null)
+        actionbar?.apply {
+            setDisplayHomeAsUpEnabled(needHomeAsUp)
+            setHomeButtonEnabled(needHomeAsUp)
+            setDisplayShowTitleEnabled(needHomeAsUp)
+            setTitle(title)
+            setDisplayShowCustomEnabled(false)
+            customView = null
+            setBackgroundDrawable(null)
+            setHomeAsUpIndicator(R.drawable.back_navigation_btn)
         }
     }
 

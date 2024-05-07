@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.noteappv2.data.entity.UserEntity
 import com.example.noteappv2.data.repository.IUserRepo
 import com.example.noteappv2.utils.ResultState
+import com.example.noteappv2.utils.log.Logger
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
@@ -14,19 +15,14 @@ class SignUpViewModel(
     private val userRepo: IUserRepo
 ) : AndroidViewModel(application) {
 
-//    init {
-//        viewModelScope.launch {
-//            val userEntity = userRepo.getUserById(uId = 1L).let { resultState ->
-//
-//            }
-//        }
-//    }
+    private val logTag = SignUpViewModel::class.java.simpleName
 
     fun executeRegisterAccount(user: UserEntity) {
         viewModelScope.launch {
             userRepo.registerAccount(user).let {
                     result ->
                 val message: String = if (result is ResultState.Success) {
+                    Logger.d(logTag, "register success with new User: ${result.data}")
                     "Register new account success, return to start sign in"
                 } else {
                     "Register failed, please try again"

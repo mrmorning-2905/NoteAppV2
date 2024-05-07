@@ -30,7 +30,7 @@ class SignInFragment : BaseFragment() {
         setupToolbar("", false)
         _binding = SiginFragmentLayoutBinding.bind(rootView)
 
-        binding.signUpBtn.setOnClickListener { setupNavigation() }
+        binding.signUpBtn.setOnClickListener { gotoSignUpFragment() }
         binding.buttonLogin.setOnClickListener { handleSignInClickListener() }
     }
 
@@ -42,11 +42,18 @@ class SignInFragment : BaseFragment() {
             Toast.makeText(context, "Please fill user name and password to sign in", Toast.LENGTH_SHORT).show()
             return
         }
-        signInViewModel.executeLogin(userName, password)
+        signInViewModel.executeLogin(userName, password) {
+            gotoNoteListFragment(it)
+        }
     }
 
-    private fun setupNavigation() {
+    private fun gotoSignUpFragment() {
         val action = SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun gotoNoteListFragment(userId: Long) {
+        val action = SignInFragmentDirections.actionSignInFragmentToNotesListFragment(userId)
         findNavController().navigate(action)
     }
 
