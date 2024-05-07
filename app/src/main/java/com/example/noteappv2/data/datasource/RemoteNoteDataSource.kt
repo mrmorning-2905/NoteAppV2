@@ -39,6 +39,10 @@ class RemoteNoteDataSource(
         TODO("Not yet implemented")
     }
 
+    override suspend fun saveManyNotes(notes: List<NoteEntity>) {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun deleteNoteById(noteId: Long) {
         TODO("Not yet implemented")
     }

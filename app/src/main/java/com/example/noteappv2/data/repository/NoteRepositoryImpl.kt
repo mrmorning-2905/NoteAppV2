@@ -30,4 +30,8 @@ class NoteRepositoryImpl(
     override suspend fun deleteAllNotes() {
         noteLocalDataSource.deleteAllNotes()
     }
+
+    override suspend fun addManyNotes(notes: List<NoteEntity>) {
+        noteLocalDataSource.saveManyNotes(notes)
+    }
 }

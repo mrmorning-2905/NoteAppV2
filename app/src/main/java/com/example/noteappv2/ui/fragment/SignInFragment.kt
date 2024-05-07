@@ -1,9 +1,8 @@
 package com.example.noteappv2.ui.fragment
 
-import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.noteappv2.R
@@ -47,14 +46,16 @@ class SignInFragment : BaseFragment() {
         }
     }
 
+
+
     private fun gotoSignUpFragment() {
         val action = SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
         findNavController().navigate(action)
     }
 
     private fun gotoNoteListFragment(userId: Long) {
-        val action = SignInFragmentDirections.actionSignInFragmentToNotesListFragment(userId)
-        findNavController().navigate(action)
+        val bundle = bundleOf("owner_id" to userId)
+        findNavController().navigate(R.id.action_signInFragment_to_notesListFragment, bundle)
     }
 
     override fun onDestroyView() {

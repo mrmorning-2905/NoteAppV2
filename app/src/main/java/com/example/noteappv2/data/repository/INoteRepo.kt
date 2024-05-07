@@ -13,4 +13,6 @@ interface INoteRepo {
     suspend fun deleteNoteById(noteId: Long)
 
     suspend fun deleteAllNotes()
+
+    suspend fun addManyNotes(notes: List<NoteEntity>)
 }

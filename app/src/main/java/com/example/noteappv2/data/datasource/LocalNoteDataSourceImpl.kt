@@ -59,6 +59,12 @@ class LocalNoteDataSourceImpl(
         }
     }
 
+    override suspend fun saveManyNotes(notes: List<NoteEntity>) {
+        withContext(ioDispatcher) {
+            noteDao.insertManyNotes(notes)
+        }
+    }
+
     override suspend fun deleteNoteById(noteId: Long) {
         withContext(ioDispatcher) {
             noteDao.deleteNoteById(noteId)

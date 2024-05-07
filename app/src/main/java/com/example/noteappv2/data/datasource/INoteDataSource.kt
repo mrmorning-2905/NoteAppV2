@@ -20,6 +20,8 @@ interface INoteDataSource {
 
     suspend fun saveNote(newNote: NoteEntity)
 
+    suspend fun saveManyNotes(notes: List<NoteEntity>)
+
     suspend fun deleteNoteById(noteId: Long)
 
     suspend fun deleteAllNotes()
