@@ -1,5 +1,8 @@
 package com.example.noteappv2.data.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
+import com.example.noteappv2.data.dao.UserAndNotes
 import com.example.noteappv2.data.datasource.INoteDataSource
 import com.example.noteappv2.data.entity.NoteEntity
 import com.example.noteappv2.utils.ResultState
@@ -33,5 +36,9 @@ class NoteRepositoryImpl(
 
     override suspend fun addManyNotes(notes: List<NoteEntity>) {
         noteLocalDataSource.saveManyNotes(notes)
+    }
+
+    override fun observerAllNoteByUserId(userId: Long): LiveData<ResultState<UserAndNotes>> {
+        return noteLocalDataSource.observerAllNoteOfUserWithId(userId)
     }
 }
